@@ -23,13 +23,17 @@ else if (event.target.className === 'edit button'){
 
 //list all the items when page loads
 function listItems(){
- gifts.forEach(function(element){
+  const gifts = fetch('http://localhost:3000/gifts')
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(function(element){
     let name = element.name
     let image = element.image
     li = createLi(name, image)
     console.log(li)
     giftsList().prepend(li)
   })
+})
 }
 
 
